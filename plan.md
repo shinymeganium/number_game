@@ -1,47 +1,41 @@
-## Plan: Digital Clock Number Grid Puzzle Game
+# Number Puzzle Game Plan
 
-**TL;DR**: Web-based puzzle game built with React 19 and Tailwind CSS, where players place 7-segment digital-clock number pieces (1-9: 1×2 vertical with rounded corners; 0: 1×1) in gaps between a 5×4 grid of squares. Goal: ≤2 square sides exposed globally (including outer sides) AND all puzzle pieces placed. Pieces rotate but don't flip; no overlaps or board overflow. Uses React components for UI, hooks for state, and Tailwind for styling.
+## Game Description
 
-### Core Components
+The game is a number puzzle game where the player has to place number-shaped game pieces onto a game board. The game board is a 5 by 4 grid formed of same size squares. The player places the game pieces on the sides of the squares. Squares that are next to and above/under each other share a side.
 
-- **Board**: 5×4 grid of squares with gaps between them (no edge gaps). 31 gap slots total: 16 horizontal (4 per row), 15 vertical (5 per column). Rendered as SVG in a React component.
-- **Pieces**: Digits 0-9 as 7-segment shapes with rounded corners. 4 rotations each. Placed in gaps to cover square sides. Defined as React components with SVG paths.
-- **Win Condition**: ≤2 square sides exposed globally (across all 20 squares, including outer sides) AND all puzzle pieces must be placed. Sides are tracked internally for logic.
-- **Rules**: No piece overlap, no placement beyond board, rotate on click, drag to place (using React DnD or native events).
+## How to Play
 
-### Implementation Steps
+The objective of the game is to place all the pieces onto the sides of the squares. Pieces cannot overlap one another (one side can occupy only one part of a number). A won game allows 2 or less sides to be unoccupied.
 
-1. **Set Up React App**: Initialize with React 19, Tailwind CSS, and dependencies (e.g., React DnD for drag-and-drop).
-2. **Define Pieces**: Create React components for 7-segment digit shapes (0-9) with rounded corners, store 4 rotations each as SVG.
-3. **Build Board**: Render 5×4 squares with 31 gap slots in a React component, map coordinates.
-4. **Add Interaction**: Use React hooks for state; click to rotate piece, drag to place in gap, validate no overlap/bounds.
-5. **Calculate Sides**: After placement, count exposed sides (uncovered by pieces in adjacent gaps) using state updates.
-6. **Win Check**: If ≤2 sides exposed AND all pieces placed, show win message via React state/modal.
-7. **Levels**: Create curated levels with pre-placed pieces and available ones, stored in state or JSON.
-8. **UI Polish**: Add piece inventory, reset button using Tailwind classes.
+## Game Pieces
 
-### Files to Create (React Structure)
+There are 10 pieces in total. They are shaped like numbers from 0 to 9. The shape is like in a digital clock (7 segments). All the numbers except 0 are 1x2 segments. The size of the zero is 1x1.
 
-- `src/App.jsx`: Main app component with game state (useState for board, pieces, sides).
-- `src/components/Board.jsx`: Renders the 5×4 grid and gaps.
-- `src/components/Piece.jsx`: Renders individual digits with rotations.
-- `src/components/Game.jsx`: Handles placement, validation, win logic.
-- `src/data/levels.js`: Curated level definitions.
-- `tailwind.config.js`: Tailwind configuration.
-- `index.html`: Basic HTML entry point.
+## Rules
 
-### Dependencies
+- There are 10 game pieces in total, one of each number (0-9).
+- When a player places a piece on the board it is removed from player inventory.
+- Pieces cannot overlap one another.
+- The game is won when 2 or less sides are unoccupied.
+- The game board is a 5 by 4 grid.
+- The grid is formed of same size squares.
+- Squares that are next to and above/under each other share a side.
+- Pieces can be rotated but not flipped while placing then on the board.
+- Pieces are placed on the sides of the squares, framing the squares instead of being inside of them.
 
-- React 19
-- Tailwind CSS
-- React DnD (for drag-and-drop) or native browser events
-- (Optional) Vite or Create React App for build setup
+## Visual Presentation
 
-### Verification
+The app will have the following parts:
 
-- Pieces render with rounded corners and rotate correctly in React components.
-- Drag-place works in gaps without overlap or overflow (test with React DnD).
-- Win triggers only when ≤2 sides exposed AND all pieces are placed.
-- All rules (no overlap, no board overflow) are enforced.
+- **Header**: Contains the game title, buttons for undo and reset level.
+- **Game Area**: Displays the game board.
+- **Footer**: Shows the inventory of not used game pieces.
 
-Ready to implement once you approve this updated plan?
+## Future Improvements
+
+- Add animations when a piece is placed.
+
+## Questions
+
+- How does the game board work? How are the shared sides of the squares implemented?
