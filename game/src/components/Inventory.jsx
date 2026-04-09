@@ -1,14 +1,15 @@
-function Inventory({ inventory, setSelectedPiece }) {
+import PieceItem from "./PieceItem";
+
+function Inventory({ inventory, selectedPiece, setSelectedPiece }) {
   return (
     <div className="inventory">
-      {inventory.map(piece => (
-        <div 
-          key={piece} 
-          className="piece-item" 
-          onClick={() => setSelectedPiece(piece)}
-        >
-          {piece}
-        </div>
+      {inventory.map((piece) => (
+        <PieceItem
+          key={piece}
+          piece={piece}
+          selected={selectedPiece === piece}
+          onSelect={setSelectedPiece}
+        />
       ))}
     </div>
   );

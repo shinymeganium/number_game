@@ -15,7 +15,6 @@
   position: relative;
   width: 150px;
   height: 150px;
-  border: 0px solid #ccc;
 }
 .edge {
   background: #000;
@@ -30,9 +29,22 @@
   margin-top: 20px;
 }
 .piece-item {
-  padding: 10px;
-  border: 10px solid #000;
+  background: transparent;
+  border: none;
   cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.piece-item.selected {
+  outline: 2px solid #0078d4;
+  outline-offset: 4px;
+}
+
+.piece-figure {
+  position: relative;
 }
 
 .header {
